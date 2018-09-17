@@ -2,6 +2,7 @@ package LinkedList
 
 type Node struct {
 	Next  *Node
+	Prev  *Node
 	Value int
 }
 
@@ -10,14 +11,14 @@ type LinkedList struct {
 }
 
 func NewLinkedList(data int) *LinkedList {
-	head := &Node{nil, data}
+	head := &Node{nil, nil, data}
 	ll := &LinkedList{head}
 	return ll
 }
 
 func (l *LinkedList) append(data int) {
 	if l.Head == nil {
-		l.Head = &Node{nil, data}
+		l.Head = &Node{nil, nil, data}
 		return
 	}
 
@@ -26,7 +27,7 @@ func (l *LinkedList) append(data int) {
 	for current.Next != nil {
 		current = current.Next
 	}
-	current.Next = &Node{nil, data}
+	current.Next = &Node{nil, current, data}
 }
 
 func (l *LinkedList) remove(data int) {

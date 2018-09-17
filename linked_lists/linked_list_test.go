@@ -17,6 +17,10 @@ func TestAppend(t *testing.T) {
 	if current.Next.Value != 4 {
 		t.Errorf("Next value is %d, when 4 is expected", current.Next.Value)
 	}
+
+	if current.Next.Prev != current {
+		t.Errorf("Prev is not set correctly")
+	}
 }
 
 func TestRemove(t *testing.T) {
