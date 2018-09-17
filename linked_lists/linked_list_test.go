@@ -14,11 +14,11 @@ func TestAppend(t *testing.T) {
 	ll.add(4)
 
 	current := ll.Head
-	if current.Next.Value != 4 {
-		t.Errorf("Next value is %d, when 4 is expected", current.Next.Value)
+	if ll.Tail.Value != 4 {
+		t.Errorf("Next value is %d, when 4 is expected", ll.Tail.Value)
 	}
 
-	if current.Next.Prev != current {
+	if ll.Tail.Prev != current {
 		t.Errorf("Prev is not set correctly")
 	}
 }

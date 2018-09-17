@@ -8,11 +8,14 @@ type Node struct {
 
 type LinkedList struct {
 	Head *Node
+	Tail *Node
 }
 
 func NewLinkedList(data int) *LinkedList {
-	head := &Node{nil, nil, data}
-	ll := &LinkedList{head}
+	node := &Node{nil, nil, data}
+	head := node
+	tail := node
+	ll := &LinkedList{head, tail}
 	return ll
 }
 
@@ -22,12 +25,8 @@ func (l *LinkedList) add(data int) {
 		return
 	}
 
-	current := l.Head
-
-	for current.Next != nil {
-		current = current.Next
-	}
-	current.Next = &Node{nil, current, data}
+	l.Tail.Next = &Node{nil, l.Tail, data}
+	l.Tail = l.Tail.Next
 }
 
 func (l *LinkedList) remove(data int) {
