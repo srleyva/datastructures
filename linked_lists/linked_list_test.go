@@ -11,7 +11,7 @@ func TestNewLinkedList(t *testing.T) {
 
 func TestAppend(t *testing.T) {
 	ll := NewLinkedList(1)
-	ll.append(4)
+	ll.add(4)
 
 	current := ll.Head
 	if current.Next.Value != 4 {
@@ -25,10 +25,10 @@ func TestAppend(t *testing.T) {
 
 func TestRemove(t *testing.T) {
 	ll := NewLinkedList(1)
-	ll.append(2)
-	ll.append(3)
-	ll.append(4)
-	ll.append(5)
+	ll.add(2)
+	ll.add(3)
+	ll.add(4)
+	ll.add(5)
 	ll.remove(3)
 
 	current := ll.Head
@@ -39,4 +39,18 @@ func TestRemove(t *testing.T) {
 		current = current.Next
 	}
 
+}
+
+func TestCount(t *testing.T) {
+	ll := NewLinkedList(1)
+
+	if ll.count() != 1 {
+		t.Errorf("Count should be 1 it is %d", ll.count())
+	}
+
+	ll.add(6)
+
+	if ll.count() != 2 {
+		t.Errorf("Count should be 2 it is %d", ll.count())
+	}
 }

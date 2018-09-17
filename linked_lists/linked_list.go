@@ -16,7 +16,7 @@ func NewLinkedList(data int) *LinkedList {
 	return ll
 }
 
-func (l *LinkedList) append(data int) {
+func (l *LinkedList) add(data int) {
 	if l.Head == nil {
 		l.Head = &Node{nil, nil, data}
 		return
@@ -44,4 +44,14 @@ func (l *LinkedList) remove(data int) {
 		}
 		current = current.Next
 	}
+}
+
+func (l *LinkedList) count() int {
+	count := 0
+	current := l.Head
+	for current != nil {
+		count++
+		current = current.Next
+	}
+	return count
 }
